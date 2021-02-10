@@ -24,17 +24,17 @@ public class CustomClassLoaderTest {
 class CustomClassLoader extends ClassLoader {
     @Override
     protected Class<?> findClass(String name) throws ClassNotFoundException {
-        byte[] result = getClassFromCustomPath(name);
-        if (result == null) {
-            try {
-                throw new FileNotFoundException();
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
+        try {
+            byte[] result = getClassFromCustomPath(name);
+            if (result == null) {
+                throw new FileNotFoundException("找不到源文件");
+            } else {
+                return defineClass(name, result, 0, result.length);
             }
-        } else {
-            return defineClass(name, result, 0, result.length);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
         }
-        throw new ClassNotFoundException();
+        throw new ClassNotFoundException(name);
     }
 
     private byte[] getClassFromCustomPath(String name) {
