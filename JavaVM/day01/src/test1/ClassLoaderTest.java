@@ -1,7 +1,7 @@
 package test1;
 
 import sun.misc.Launcher;
-import sun.security.ec.CurveDB;
+//import sun.security.ec.CurveDB;
 
 import java.net.URL;
 import java.security.Provider;
@@ -27,8 +27,8 @@ public class ClassLoaderTest {
         for (String path : property.split(";")) {
             System.out.println(path);
         }
-        //从上面路径中任意选择一个类，查看其类加载器: 扩展类加载器
-        ClassLoader classLoader1 = CurveDB.class.getClassLoader();
-        System.out.println(classLoader1);//sun.misc.Launcher$ExtClassLoader@677327b6
+//        //从上面路径中任意选择一个类，查看其类加载器: 扩展类加载器
+//        ClassLoader classLoader1 = CurveDB.class.getClassLoader();
+//        System.out.println(classLoader1);//sun.misc.Launcher$ExtClassLoader@677327b6
     }
 }
