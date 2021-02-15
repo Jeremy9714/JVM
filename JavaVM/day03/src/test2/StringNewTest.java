@@ -15,9 +15,8 @@ public class StringNewTest {
         System.out.println(s1 == s2);//jdk6: false    jdk7/8: false
 
         String s3 = new String("a") + new String("b");//s3变量记录的地址是new String("ab")
-        //此时字符串常量池中不存在"ab"
 
-        //在字符串常量池中生成"ab" -->
+        // 此时字符串常量池中不存在"ab" -->
         // jdk6: 创建了一个新的对象"ab"，也就有新的地址
         // jdk7/8: 此时常量池中并没有创建新对象"ab"，而是创建一个指向堆空间中 new String("ab")的地址
         s3.intern();
